@@ -12,3 +12,15 @@ class Notes(models.Model):
         verbose_name_plural="notes"
     def __str__(self):
         return self.title
+    
+class Homework(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    subject=models.CharField(max_length=50)
+    title=models.TextField()
+    description=models.TextField(default='')
+    due=models.DateTimeField()
+    is_finished=models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.title
+    

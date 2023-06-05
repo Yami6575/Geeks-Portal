@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-#6^06^yn-ar=b_@yahugaw8kwsi2y0gtao=_7^e4*%mhr%u)h4
 DEBUG = True
 
 ALLOWED_HOSTS = []
+MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
+
 
 
 # Application definition
