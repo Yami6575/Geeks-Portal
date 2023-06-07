@@ -1,5 +1,6 @@
 from django import forms
 from . models import *
+from django.contrib.auth.forms import UserCreationForm
 
 class NotesForm(forms.ModelForm):
     class Meta:
@@ -14,3 +15,7 @@ class HomeworkForm(forms.ModelForm):
         fields=['subject','title','description','due','is_finished']
 class DashboardForm(forms.Form):
     text=forms.CharField(max_length=100,label="Enter Your Search:")
+class UserRegistrationForm(UserCreationForm):
+    class Meta:
+        model=User
+        fields=['username','password1','password2']
