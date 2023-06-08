@@ -103,9 +103,21 @@ def youtube(request):
     context={'form':form}
     return render(request,"dashboard/youtube.html",context)
 def register(request):
-    form =UserRegistrationForm()
+    if request.method =='POST':
+        form=UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data.get('username')
+            messages.success(request,f"Account created for {username}")
+            return redirect('login')
+            
+    else:
+        
+        form =UserRegistrationForm()
     context={
         'form':form
     }
     
-    return render(request,"dashboard/register.html",context)
+    return render(request,"dashboard/register.html",context) 
+# def profile(request):
+#     return render(request,"dashboard/profile.html")
